@@ -1,5 +1,9 @@
-const Aboutus = () => {
-    return <div>this is the about us page </div>
-  }
-  
-  export default Aboutus
+import React from 'react'
+
+const aboutus = () => {
+  return (
+    <div>aboutus</div>
+  )
+}
+
+export default aboutus

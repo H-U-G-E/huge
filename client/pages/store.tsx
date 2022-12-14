@@ -1,5 +1,9 @@
-const Store = () => {
-    return <div>this is the store page</div>
-  }
-  
-  export default Store
+import React from 'react'
+
+const store = () => {
+  return (
+    <div>store</div>
+  )
+}
+
+export default store

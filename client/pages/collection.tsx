@@ -1,5 +1,9 @@
-const Collection = () => {
-    return <div>this is the collection page </div>
-  }
-  
-  export default Collection
+import React from 'react'
+
+const collection = () => {
+  return (
+    <div>collection</div>
+  )
+}
+
+export default collection
