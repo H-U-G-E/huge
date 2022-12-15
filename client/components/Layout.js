@@ -19,11 +19,13 @@ const Layout = ({ title, children }) => {
 
             <link href='/'/><a className='text-lg font-bold'></a>
             <div>
-            <Link href='/collection'className="p-2 text-dark">Collection</Link>
+            
             <Link href='/home' className="p-2 text-dark">Home</Link>
+            <Link href='/collection'className="p-2 text-dark">Collection</Link>
+            
 
             <Link href='/store' className="p-2 text-dark">Store</Link>
-
+            <Link href='/cart' className="p-2 text-dark">cart</Link>
               <Link href='/aboutus'className="p-2 text-dark">About us</Link>
               <Link href='/login'className="p-2 text-dark">Login</Link>
             </div>
