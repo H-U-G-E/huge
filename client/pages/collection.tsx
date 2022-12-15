@@ -69,7 +69,24 @@ const collection = () => {
           </Link>
         </div>
       </nav>
+      <center>
+      <input type="text" placeholder="Search.."></input>
+</center>
+<div className="h-175 d-flex align-items-center justify-content-center" >
+      <div className='row align-items-center'>
+      
+      <div className='col'>
+      <h1 className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-5xl font-black">BLACK FRIDAY SALE</h1>
+<h1 className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-5xl font-black">UP TO 90% OFF</h1>
+<h1 className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-5xl font-black">WELCOME!</h1>
 
+        </div> 
+      <div className="col">
+      <img src="https://octanecdn.com/forevervetscom/forevervetscom_679279103.gif" alt="" />
+    </div>
+    
+      </div>
+      </div>
       <div>
         <div className="row justify-content-center">
                     <div className="col-4">
@@ -251,6 +268,7 @@ const collection = () => {
 
       <div className="container">
        <div className="row">
+
         {  allProducts && allProducts.map((e)=>{
           return ( 
             
@@ -308,6 +326,7 @@ const collection = () => {
                       
                     </div>
 
+    
           )
         })
          

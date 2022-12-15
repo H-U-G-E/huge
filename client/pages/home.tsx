@@ -4,11 +4,11 @@ import SimpleImageSlider from "react-simple-image-slider";
 
 
 const images = [
-  { url: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1671067457/happy-dog-wearing-pink-warm-knitted-sweater-playing-at-fine-fall-day_gzhaqv.jpg" },
-  { url: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1671067586/how-to-dress-your-dog-1024x548_ryfvb7.jpg" },
-  { url: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1671066353/111_vxvwre.webp" },
-  { url: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1671066393/1111_ekrfwo.webp" },
-  { url: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1671066393/1111_ekrfwo.webp" },
+  { url: "https://blogs-images.forbes.com/ceciliarodriguez/files/2018/01/moncler-dog-jackets-mondog-.jpg" },
+  { url: "https://media.gucci.com/content/DiaryHeroArticle_Standard_1600x812/1655895611/DiaryHeroArticle_Gucci-Pet-Collection-01_001_Default.jpg" },
+  { url: "https://powerofthepaw.org/wp-content/uploads/2021/02/4-870x400.jpeg" },
+  { url: "https://www.foundanimals.org/wp-content/uploads/2019/01/pet-accessories.jpg" },
+  { url: "https://www.k9ofmine.com/wp-content/uploads/2021/12/dog-modeling-jobs.jpg" },
 
   
 ];
@@ -31,11 +31,12 @@ const home = () => {
               <Link href='/login'className="p-2 text-dark">Login</Link>
             </div>
           </nav>
+             
 
           <div className='grid  place-items-center'>
       <SimpleImageSlider
-        width={1500}
-        height={530}
+        width={1600}
+        height={580}
         images={images}
         showBullets={true}
         showNavs={true}
@@ -45,6 +46,9 @@ const home = () => {
 
 
     </div>
+
+    
+  
 
     <footer className="relative bg-blueGray-200 pt-8 pb-6">
   <div className="container mx-auto px-4">
