@@ -19,7 +19,7 @@ app.use(cookieParser())
  
 app.use("/user",dcrouter)
 
-const PORT = 5000;
+const PORT = 3001;
 
 app.listen(PORT, function () {
   console.log("server run http://localhost/:" + PORT);

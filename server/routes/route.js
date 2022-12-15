@@ -19,7 +19,7 @@ const {
 } = require("../controller/controller");
 
 //Posts requests
-dcrouter.route('/addProduct').post(addProduct)//mtea mariem
+dcrouter.route('/addProduct').post(addProduct)
 dcrouter.route('/deleteProduct/:name').delete(deleteProduct)
 dcrouter.route('/getAllProducts').get(GetAllProducts)
 
@@ -41,7 +41,7 @@ dcrouter.route("/productlike/:name").put(Like);
 dcrouter.route("/productdislike/:name").put(disLike); 
 dcrouter.route("/oneproduct/:name").get(getOneProduct); 
 dcrouter.route("/filter/:Ptype").get(FiltertypeProduct)
-dcrouter.route("/filter/:Pcategorie").get(FiltercategoProduct)
+dcrouter.route("/filters/:Pcategorie").get(FiltercategoProduct)
 
 //
 

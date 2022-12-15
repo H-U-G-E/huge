@@ -215,7 +215,7 @@ const deleteUser = async (req, res) => {
 
 const FiltercategoProduct = async (req, res) => {
   try {
-    Recipe.find({ Pcategorie: req.params.Pcategorie }).then((result) => {
+    Product.find({ Pcategorie: req.params.Pcategorie }).then((result) => {
       res.json(result);
     });
   } catch (err) {
@@ -224,7 +224,7 @@ const FiltercategoProduct = async (req, res) => {
 };
 const FiltertypeProduct = async (req, res) => {
     try {
-      Recipe.find({ Ptype: req.params.Ptype }).then((result) => {
+      Product.find({ Ptype: req.params.Ptype }).then((result) => {
         res.json(result);
       });
     } catch (err) {
