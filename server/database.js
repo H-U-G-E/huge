@@ -48,7 +48,10 @@ mongoose.connect("mongodb://0.0.0.0/catsdogs",{
         },
         Pprice:{
             type:Number
-        }
+        },
+        Pdesciption:{
+            type:String 
+        },
       });
 
       const User = mongoose.model('User', UserSchema);
