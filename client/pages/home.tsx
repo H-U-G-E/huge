@@ -1,6 +1,16 @@
-import React from 'react'
+import React , { useEffect, useState } from 'react'
 import Link from "next/link"
 import SimpleImageSlider from "react-simple-image-slider";
+
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+import { auth } from "../firebase-config.js";
+import axios from "axios";
 
 
 const images = [
@@ -13,24 +23,68 @@ const images = [
   
 ];
 const home = () => {
+  const [user, setUser] = useState({} || null);
+  const [email, setEmail] = useState("");
+
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      
+    });
+  }, []);
+  const logOut = async () => {
+
+    await signOut(auth);
+    window.location.href='/'
+  };
+
+
   return (
     <>
-    <div>
-       <nav  className='relative flex h-12 items-center px-4 justify-between shadow-md dark:shadow-gray-700' style={{height:"70px" }}>
-          <img src="https://res.cloudinary.com/dnwi9wvci/image/upload/v1670936284/1_rdfnhm.png" className="logo" style={{width:"200px" ,height:"170px"}} alt="" />
+    <div> 
+    <nav
+        className="relative flex h-12 items-center px-4 justify-between shadow-md dark:shadow-gray-700"
+        style={{ height: "70px" }}
+      >
+        <img
+          src="https://res.cloudinary.com/dnwi9wvci/image/upload/v1670936284/1_rdfnhm.png"
+          className="logo"
+          style={{ width: "200px", height: "170px" }}
+          alt=""
+        />
 
-            
+        <div>
+          <Link href="/" className="p-2 text-dark no-underline hover:underline">
+            Home
+          </Link>
+          <Link href="/collection" className="p-2 text-dark no-underline hover:underline">
+            Collection
+          </Link>
+
+          <Link href="/store" className="p-2 text-dark no-underline hover:underline">
+            Store
+          </Link>
+          <Link href="/cart" className="p-2 text-dark no-underline hover:underline">
+            cart
+          </Link>
+          <Link href="/aboutus" className="p-2 text-dark no-underline hover:underline">
+            About us
+          </Link>
+          {user ? (
             <div>
-            
-            <Link href='/home' className="p-2 text-dark">Home</Link>
-            <Link href='/collection'className="p-2 text-dark">Collection</Link>
-
-            <Link href='/store' className="p-2 text-dark">Store</Link>
-            <Link href='/cart' className="p-2 text-dark">Cart</Link>
-              <Link href='/aboutus'className="p-2 text-dark">About us</Link>
-              <Link href='/login'className="p-2 text-dark">Login</Link>
+             
+              <Link href="" className="p-2 text-dark">
+                <button onClick={logOut}>log out</button>
+              </Link>
             </div>
-          </nav>
+          ) : (
+            <Link href="/login" className="p-2 text-dark">
+              Login
+            </Link>
+          )}
+        </div>
+      </nav>
              
 
           <div className='grid  place-items-center'>
@@ -46,6 +100,43 @@ const home = () => {
 
 
     </div>
+
+
+    {/* <!-- Start Categories of The Month --> */}
+    <section className="container py-5">
+        <div className="row text-center pt-3">
+            <div className="col-lg-6 m-auto">
+                <h1 className="h1">Show your pet the love that he deserve</h1>
+                <p>
+                    
+                </p>
+            </div>
+        </div>
+
+        <div className='justify-content-center'>
+        <div className="row justify-content-center">
+            <div className="col-10 col-md-3 p-5 mt-3">
+                <a href="#"><img src="https://res.cloudinary.com/dnwi9wvci/image/upload/v1671116336/2022-Holiday-P1-HolidayShop-Dog-Deals_hd0lgp.jpg" className="rounded-circle img-fluid border"/></a>
+                <h5 className="text-center mt-3 mb-3" style={{width:"224px"}}>Dogs</h5>
+                <p className="text-center"><a className="btn btn-success " >Go Shop</a></p>
+            </div>
+            <div className="col-12 col-md-3 p-5 mt-3">
+                <a href="#"><img src="https://res.cloudinary.com/dnwi9wvci/image/upload/v1671116391/2022-Holiday-P1-HolidayShop-Cat-Deals_nvknns.jpg" className="rounded-circle img-fluid border"/></a>
+                <h2 className="h5 text-center mt-3 mb-3" style={{width:"224px"}}>Cats</h2>
+                <p className="text-center"><a className="btn btn-success">Go Shop</a></p>
+            </div>
+            <div className="col-12 col-md-3 p-5 mt-3">
+                <a href="#"><img src="https://res.cloudinary.com/dnwi9wvci/image/upload/v1671116957/2022-Holiday-P1-HolidayShop-ExploreMore_nswhdh.jpg" className="rounded-circle img-fluid border"/></a>
+                <h2 className="h5 text-center mt-3 mb-3" style={{width:"224px"}}>Accessories</h2>
+                <p className="text-center"><a className="btn btn-success">Go Shop</a></p>
+            </div>
+        </div>
+        </div>
+    </section>
+    {/* <!-- End Categories of The Month --> */}
+
+
+    
 
     
   
@@ -118,8 +209,8 @@ const home = () => {
     <div className="flex flex-wrap items-center md:justify-between justify-center">
       <div className="w-full md:w-4/12 px-4 mx-auto text-center">
         <div className="text-sm text-blueGray-500 font-semibold py-1">
-          Copyright © <span id="get-current-year">2021</span><a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank"/> Notus JS by
-          <a href="https://www.creative-tim.com?ref=njs-profile" className="text-blueGray-500 hover:text-blueGray-800">Creative Tim</a>.
+          Copyright © <span id="get-current-year">2022</span><a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank"/> Notus JS by
+          wiem & aziz & houssem
         </div>
       </div>
     </div>
