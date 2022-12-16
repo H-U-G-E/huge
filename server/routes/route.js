@@ -6,8 +6,8 @@ const {
     disLike,
     GetAllProducts,
     addProduct,
-    SignUp,
-    Login,
+    signUp,
+    login,
     getUser,
     UpdateUser,
     deleteProduct,
@@ -30,8 +30,8 @@ dcrouter.route("/getUser/:name").get(getUser);
 dcrouter.route("/getUser/:name").put(UpdateUser); 
 dcrouter.route('/getAllUsers').get(getAllUsers)
 dcrouter.route('/deleteUser/:name').delete(deleteUser)
-dcrouter.route("/signup").post(SignUp);
-dcrouter.route("/login").post(Login);
+dcrouter.route("/signup").post(signUp);
+dcrouter.route("/login").post(login);
 dcrouter.route("/check").post(CheckUser);
 
 //Recipe Requests
