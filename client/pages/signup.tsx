@@ -58,6 +58,7 @@ const signup = () => {
       //? i want navigate to home page 
       // <Link href="/home" className="p-2 text-dark"></Link>;
       // router.push('/login')
+      window.location.href='/home'
     } catch (error: any) {
       console.log(error.meassage);
     }
@@ -77,22 +78,13 @@ const signup = () => {
         />
 
         <div>
-          <Link href="/home" className="p-2 text-dark">
-            Home
-          </Link>
-          <Link href="/collection" className="p-2 text-dark">
-            Collection
-          </Link>
+         
+          
 
-          <Link href="/store" className="p-2 text-dark">
-            Store
-          </Link>
-          <Link href="/cart" className="p-2 text-dark">
-            Cart
-          </Link>
-          <Link href="/aboutus" className="p-2 text-dark">
-            About us
-          </Link>
+          
+         
+         
+          
           {user ? (
             <div>
               <Link href="" className="p-2 text-dark">
@@ -194,7 +186,7 @@ const signup = () => {
                         </div>
                         <div className="flex items-center justify-between pb-6">
                           <p className="mb-0 mr-2">already have an account?</p>
-                          <Link href="/login" className="p-2 text-dark">
+                          <Link href="/" className="p-2 text-dark">
                             <button
                               type="button"
                               className="inline-block px-6 py-2 border-2 border-gray-600 text-gray-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
