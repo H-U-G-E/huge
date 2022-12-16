@@ -18,27 +18,68 @@ const deleteProduct = async (req, res) => {
 }
 
 
-const SignUp= async(req,res)=>{
-    let body= req.body
-    try{
-const Password= await bcrypt.hash(body.password,10)
+
+const signUp = async (req, res) => {
+  try {
+    // const pw = bcrypt.hashSync(req.body.Upassword, 8);
+
+    // await User.create({
+    //   Uname: req.body.username,
+    //   Uemail: req.body.email,
+    //   Upassword: pw
+    // })
+
+    await User.create(req.body)
+
+    res.json({ message: `${req.body.Uname} added successfuly` });
+  } catch (error) {
+    res.status(400).json({ message: "something went wrong" });
+    console.log(error);
+  }
+};
+  
+
+const login = async (req, res) => {
+  let body = req.body;
+
+  const user = await User.findOne({ Uemail: body.Uemail });
+
+  if (!user) {
+    return { status: "error", error: "username not found" };
+  } else {
+    const token = jwt.sign(
+      { name: user.Uname, email: user.Uemail, Uimage: user.Uimage },
+      "topsecret"
+    );
+    return res.json({ user: token, status: "all good" });
+  }
+  }
 
 
-    await User.create({
-      Uname: body.username,
-      Uemail: body.email,
-      Upassword: Password
-    }, (err, result) => {
-      if (err) console.log(err);
 
-      else res.json(result);
-    })
-  } catch (err) {
+
+
+// const SignUp= async(req,res)=>{
+//     let body= req.body
+//     try{
+// const Password= await bcrypt.hash(body.password,10)
+
+
+//     await User.create({
+//       Uname: body.username,
+//       Uemail: body.email,
+//       Upassword: Password
+//     }, (err, result) => {
+//       if (err) console.log(err);
+
+//       else res.json(result);
+//     })
+//   } catch (err) {
 
  
-    alert('err')
-  }
-}
+//     console.log('err')
+//   }
+// }
 
 const CheckUser = async (req, res) => {
 
@@ -89,26 +130,26 @@ const UpdateUser = async (req, res) => {
     res.json(err, 'errorrororoeeeee');
   }
 };
-const Login = async (req, res) => {
-  let body = req.body
+// const Login = async (req, res) => {
+//   let body = req.body
 
 
-  const user = await User.findOne({ Uname: body.username })
+//   const user = await User.findOne({ Uname: body.username })
 
-  if (!user) {
-    return { status: 'error', error: 'username not found' }
-  }
-  let Check = await bcrypt.compare(
-    body.password, user.Upassword
-  )
-  if (Check) {
-    const token = jwt.sign({ name: user.Uname, email: user.Uemail }, 'topsecret')
-    return res.json({ user: token, status: 'all good' })
-  }
-  else {
-    return res.json({ status: 'error', user: false })
-  }
-}
+//   if (!user) {
+//     return { status: 'error', error: 'username not found' }
+//   }
+//   let Check = await bcrypt.compare(
+//     body.password, user.Upassword
+//   )
+//   if (Check) {
+//     const token = jwt.sign({ name: user.Uname, email: user.Uemail }, 'topsecret')
+//     return res.json({ user: token, status: 'all good' })
+//   }
+//   else {
+//     return res.json({ status: 'error', user: false })
+//   }
+// }
 
 
 
@@ -239,8 +280,8 @@ module.exports = {
   disLike,
   GetAllProducts,
   addProduct,
-  SignUp,
-  Login,
+  signUp,
+  login,
   getUser,
   UpdateUser,
   deleteProduct,
